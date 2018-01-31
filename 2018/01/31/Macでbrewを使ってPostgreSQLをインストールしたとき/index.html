@@ -7,17 +7,18 @@
   
   <title>Macでbrewを使ってPostgreSQLをインストールしたとき | いかの製作途中ブログ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ikatyanのプログラミング勉強・足跡のブログです。ときどき仕事場に関する愚痴も言ってます。">
+  <meta name="description" content="データベースを勉強するため、PostgreSQLをインストールした際、疑問に思って検索したことを書いておきます PostgreSQLをインストールインストールは他のブログやqiitaに出てるのと同じ install1brew install postgresql ##エンコードをutf-8に指定エンコードをutf-8に指定するやつ ここはパスを直接指定しているのでちょっとモヤット感がある。他に方法">
+<meta name="keywords" content="sql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Macでbrewを使ってPostgreSQLをインストールしたとき">
 <meta property="og:url" content="http://Ikatyan.github.io/2018/01/31/Macでbrewを使ってPostgreSQLをインストールしたとき/index.html">
 <meta property="og:site_name" content="いかの製作途中ブログ">
-<meta property="og:description" content="ikatyanのプログラミング勉強・足跡のブログです。ときどき仕事場に関する愚痴も言ってます。">
+<meta property="og:description" content="データベースを勉強するため、PostgreSQLをインストールした際、疑問に思って検索したことを書いておきます PostgreSQLをインストールインストールは他のブログやqiitaに出てるのと同じ install1brew install postgresql ##エンコードをutf-8に指定エンコードをutf-8に指定するやつ ここはパスを直接指定しているのでちょっとモヤット感がある。他に方法">
 <meta property="og:locale" content="jp">
-<meta property="og:updated_time" content="2018-01-31T14:41:38.314Z">
+<meta property="og:updated_time" content="2018-01-31T16:05:01.088Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Macでbrewを使ってPostgreSQLをインストールしたとき">
-<meta name="twitter:description" content="ikatyanのプログラミング勉強・足跡のブログです。ときどき仕事場に関する愚痴も言ってます。">
+<meta name="twitter:description" content="データベースを勉強するため、PostgreSQLをインストールした際、疑問に思って検索したことを書いておきます PostgreSQLをインストールインストールは他のブログやqiitaに出てるのと同じ install1brew install postgresql ##エンコードをutf-8に指定エンコードをutf-8に指定するやつ ここはパスを直接指定しているのでちょっとモヤット感がある。他に方法">
   
     <link rel="alternate" href="/atom.xml" title="いかの製作途中ブログ" type="application/atom+xml">
   
@@ -90,13 +91,28 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>データベースを勉強するため、PostgreSQLをインストールした際、疑問に思って検索したことを書いておきます</p>
+<h2 id="PostgreSQLをインストール"><a href="#PostgreSQLをインストール" class="headerlink" title="PostgreSQLをインストール"></a>PostgreSQLをインストール</h2><p>インストールは他のブログやqiitaに出てるのと同じ</p>
+<figure class="highlight bash"><figcaption><span>install</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install postgresql</span><br></pre></td></tr></table></figure>
+<p>##エンコードをutf-8に指定<br>エンコードをutf-8に指定するやつ</p>
+<p>ここはパスを直接指定しているのでちょっとモヤット感がある。他に方法はないのかしらん</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">initdb /usr/<span class="built_in">local</span>/var/postgres -E utf8</span><br></pre></td></tr></table></figure>
+<h2 id="PostgreSQLの起動"><a href="#PostgreSQLの起動" class="headerlink" title="PostgreSQLの起動"></a>PostgreSQLの起動</h2><p>PostgreSQLを起動する時のコマンド、Google先生に”postgre 起動”みたいなことを聞くと、検索結果の上位に下のようなコマンド打ちなさいよーと言われる</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">postgres -D /usr/<span class="built_in">local</span>/var/postgres/</span><br></pre></td></tr></table></figure>
+<p>ちゃんと起動はできるけど、自分の環境だと処理が終了しなくて次のコマンドが打てなかったり、<br>linuxだと-Dつけなくても起動できるらしいとすごくもやもやしたので、別の方法を捜索<br>そしたらbrew servicesという方法が見つかった</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew services start postgres</span><br></pre></td></tr></table></figure>
+<p>これのお陰で”/usr/local/var/postgres”を覚えなくても良くなったし、ちゃんと次のコマンドも打てるようになった、やったぜ</p>
+<h2 id="最後に"><a href="#最後に" class="headerlink" title="最後に"></a>最後に</h2><p>brew servicesを使った方法は日本語のサイトで見つからなかったので、<br>海外のサイトを調べ回って出てきたときに、”もしかして日本のサイトでは紹介されてないのでは”と思って、今回記事にしました。</p>
+<p>しかし、あとから調べると、ちゃんとqiitaやらブログなどでたくさん記事が見つかりましたとさ。<br>めでたしめでたし</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://Ikatyan.github.io/2018/01/31/Macでbrewを使ってPostgreSQLをインストールしたとき/" data-id="cjd39gi5e0000g5gvleok60e5" class="article-share-link">Teilen</a>
+      <a data-url="http://Ikatyan.github.io/2018/01/31/Macでbrewを使ってPostgreSQLをインストールしたとき/" data-id="cjd39jdzl0001izgve8jkzziz" class="article-share-link">Teilen</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql/">sql</a></li></ul>
+
     </footer>
   </div>
   
@@ -122,9 +138,23 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/sql/" style="font-size: 10px;">sql</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
